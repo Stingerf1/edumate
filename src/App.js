@@ -134,7 +134,7 @@ const App = () => {
     if (!hasAccess) return <PasswordScreen onAccess={() => setHasAccess(true)} />;
 
     return (
-    <MathJaxContext version={3} config={config}>
+        <MathJaxContext version={3} config={config}>
         <div style={{
             backgroundColor: '#000000',
             minHeight: '100vh',
@@ -230,7 +230,8 @@ const App = () => {
             </div>
         </div>
     </MathJaxContext>
-);
-}
+
+    );
+};
 
 export default App;
