@@ -213,7 +213,6 @@ const App = () => {
                     minHeight: '120px',
                     color: '#ffffff',
                     fontSize: '1rem',
-                    whiteSpace: 'pre-wrap'
                 }}>
                     <strong style={{
                         display: 'block',
