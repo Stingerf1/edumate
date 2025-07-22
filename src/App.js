@@ -134,31 +134,103 @@ const App = () => {
     if (!hasAccess) return <PasswordScreen onAccess={() => setHasAccess(true)} />;
 
     return (
-        <MathJaxContext version={3} config={config}>
-            <div style={{ padding: 30, maxWidth: 600, margin: 'auto' }}>
-                <h1>Resolución de Problemas Matemáticos</h1>
+    <MathJaxContext version={3} config={config}>
+        <div style={{
+            backgroundColor: '#000000',
+            minHeight: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontFamily: 'Segoe UI, sans-serif',
+            padding: '1rem',
+            color: '#ffffff'
+        }}>
+            <div style={{
+                backgroundColor: '#111111',
+                padding: '2rem',
+                borderRadius: '16px',
+                boxShadow: '0 0 12px rgba(255, 153, 0, 0.15)',
+                width: '100%',
+                maxWidth: '720px',
+                border: '1px solid #222'
+            }}>
+                <h1 style={{
+                    textAlign: 'left',
+                    marginBottom: '1.5rem',
+                    fontSize: '1.8rem',
+                    color: '#ff9900',
+                    fontWeight: '700',
+                    letterSpacing: '0.5px'
+                }}>
+                    Resolver Ecuaciones Diferenciales
+                </h1>
+
                 <textarea
-                    rows={5}
+                    rows={6}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Escribe aquí el problema..."
-                    style={{ width: '100%', marginBottom: 10 }}
+                    placeholder="Ej: y'' + 4y' + 13y = 0"
+                    style={{
+                        width: '100%',
+                        padding: '1rem',
+                        fontSize: '1rem',
+                        borderRadius: '10px',
+                        border: '1px solid #444',
+                        backgroundColor: '#1a1a1a',
+                        color: '#fff',
+                        resize: 'none',
+                        boxSizing: 'border-box',
+                        marginBottom: '1rem',
+                        fontFamily: 'inherit'
+                    }}
                 />
+
                 <button
                     onClick={isCompleted ? handleReset : handleSend}
                     disabled={loading}
+                    style={{
+                        width: '100%',
+                        padding: '0.85rem',
+                        fontSize: '1rem',
+                        backgroundColor: loading ? '#444' : '#ff9900',
+                        color: '#000',
+                        fontWeight: 'bold',
+                        border: 'none',
+                        borderRadius: '10px',
+                        cursor: loading ? 'not-allowed' : 'pointer',
+                        transition: 'all 0.3s ease'
+                    }}
                 >
-                    {isCompleted ? 'Nuevo problema' : 'Enviar'}
+                    {isCompleted ? 'Nuevo Problema' : 'Resolver'}
                 </button>
-                <div style={{ marginTop: 20 }}>
-                    <strong>Resultado:</strong>
+
+                <div style={{
+                    marginTop: '2rem',
+                    backgroundColor: '#1e1e1e',
+                    padding: '1rem',
+                    borderRadius: '12px',
+                    border: '1px solid #333',
+                    minHeight: '120px',
+                    color: '#ffffff',
+                    fontSize: '1rem',
+                    whiteSpace: 'pre-wrap'
+                }}>
+                    <strong style={{
+                        display: 'block',
+                        marginBottom: '0.5rem',
+                        color: '#ff9900',
+                        fontSize: '1.05rem'
+                    }}>
+                        Resultado:
+                    </strong>
                     <MathJax inline dynamic>
                         <div key={output}>{output || displayText}</div>
                     </MathJax>
                 </div>
             </div>
-        </MathJaxContext>
-    );
-};
+        </div>
+    </MathJaxContext>
+);
+}
 
 export default App;
